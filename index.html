@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/" type="image/x-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <link rel="stylesheet" href="./resources/css/variables.css">
+  <link rel="stylesheet" href="./resources/css/reset.css">
+  <link rel="stylesheet" href="./resources/css/style.css">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.6.0/math.min.js'></script>
+  <title>Graphing Calculator</title>
+</head>
+<body>
+
+  <main>
+
+    <canvas id="plane"></canvas>
+
+    <div id="footerBar" class="hideTooltip">
+
+      <div id="tooltipBar">
+        <h4 id="msgTitle"></h4>
+        <p id="msgContent"></p>
+      </div>
+
+      <div id="inputBar">
+
+        <select id="writingMode">
+          <option value="function" selected>
+            Add Function
+          </option>
+          <option value="point">
+            Add Point
+          </option>
+          <option value="circle">
+            Add Circle
+          </option>
+        </select>
+
+        <div id="writingModeIcon">
+          <span id="functionIcon" class="material-symbols-outlined active">function</span>
+          <span id="pointIcon" class="material-symbols-outlined">radio_button_checked</span>
+          <span id="circleIcon" class="material-symbols-outlined">architecture</span>
+        </div>
+
+        <div id="addFunction" class="inputs active">
+          <h4>y = </h4>
+          <input type="text" id="inputFunction" placeholder="sin(x^2)*x">
+        </div>
+        <div id="addPoint" class="inputs">
+          <h4>A : </h4>
+          <input type="text" id="inputPoint" pattern="^\(\d,\d\)$" placeholder="(2,5)">
+        </div>
+        <div id="addCircle" class="inputs">
+          <h4>y = </h4>
+          <input type="text" id="inputCircle" placeholder="sqrt(x^2 - 5)">
+        </div>
+
+        <button id="addBtn">
+          <span class="material-symbols-outlined">add</span>
+        </button>
+      </div>
+      
+    </div>
+
+    <aside>
+
+      <div id="asideTools" class="asideContent active">
+        <h2>Tools</h2>
+        <hr>
+        <div id="container_tools">
+          <button id="pointButton" title="Add a Point">
+            <img src="./resources/images/points.png" alt="Points">
+            <p>Point</p>
+          </button>
+          <button id="segmentButton" title="Add a Line Segment">
+            <img src="./resources/images/nodes.png" alt="Segment">
+            <p>Segment</p>
+          </button>
+          <button id="lineButton" title="Add a Straight Line">
+            <img src="./resources/images/diagonal-line.png" alt="Points">
+            <p>Line</p>
+          </button>
+          <button id="angleButton" title="Add an Angle">
+            <img src="./resources/images/angle.png" alt="Angle">
+            <p>Angle</p>
+          </button>
+          <button id="intersectButton" title="Find an Intersection">
+            <img src="./resources/images/intersect.png" alt="Intersect">
+            <p>Intersect</p>
+          </button>
+          <button id="circleButton" title="Add a Circle">
+            <img src="./resources/images/circle.png" alt="Cricle">
+            <p>Circle</p>
+          </button>
+          <button id="clearButton" title="Clear All">
+            <img src="./resources/images/clear.png" alt="Clear All">
+            <p>Clear All</p>
+          </button>
+        </div>
+      </div>
+
+      <div id="asideObjects" class="asideContent">
+        <h2>Objects</h2>
+        <hr>
+        <div id="container_objects">
+          <p>No objects yet</p>
+        </div>
+      </div>
+
+      <div id="asideSettings" class="asideContent">
+        <h2>Settings</h2>
+        <hr>
+        <div id="container_settings">
+          <div>
+            <label for="darkMode">Dark Mode</label>
+            <input type="checkbox" id="darkMode">
+          </div>
+          <div>
+            <label for="accentColor">Select Accent Color</label>
+            <select id="accentColor">
+              <option value="red">Red</option>
+              <option value="blue">Blue</option>
+              <option value="green">Green</option>
+              <option value="default" selected>Default</option>
+            </select>
+          </div>
+          <hr>
+          <div>
+            <label for="xAxis">Show xAxis</label>
+            <input type="checkbox" id="xAxis" checked="true">
+          </div>
+          <div>
+            <label for="yAxis">Show yAxis</label>
+            <input type="checkbox" id="yAxis" checked="true">
+          </div>
+          <div>
+            <label for="numbers">Show Numbers</label>
+            <input type="checkbox" id="numbers" checked="true">
+          </div>
+          <div>
+            <label for="grid">Show Grid</label>
+            <input type="checkbox" id="grid" checked="true">
+          </div>
+          <div>
+            <label for="detailGrid">Show Detail Grid</label>
+            <input type="checkbox" id="detailGrid">
+          </div>
+          <hr>
+          <div>
+            <label for="mouseCoord">Show Mouse Coordinates</label>
+            <input type="checkbox" id="mouseCoord">
+          </div>
+          <div>
+            <label for="biggerFont">Bigger Font</label>
+            <input type="checkbox" id="biggerFont">
+          </div>
+          <div>
+            <label for="snapPoints">Snap to Points</label>
+            <input type="checkbox" id="snapPoints" checked="true">
+          </div>
+        </div>
+      </div>
+
+      <div id="asideControlBar">
+        <button id="setTools" title="Tools" class="active">
+          <span class="material-symbols-outlined">design_services</span>
+        </button>
+        <button id="setObjects" title="Objects" class="">
+          <span class="material-symbols-outlined">token</span>
+        </button>
+        <button id="setSettings" title="Settings" class="">
+          <span class="material-symbols-outlined">settings</span>
+        </button>
+      </div>
+
+    </aside>
+
+  </main>
+
+  <script src="./resources/js/GeometricObjects.js"></script>
+  <script src="./resources/js/main.js"></script>
+  <script src="./resources/js/controls.js"></script>
+</body>
+</html>

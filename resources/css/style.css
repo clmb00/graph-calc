@@ -1,0 +1,387 @@
+body, html , main{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body{
+  font-family: 'Inter', sans-serif;
+}
+
+main{
+  display: flex;
+}
+/* -------------------------------------------- */
+
+/* icons */
+.material-symbols-outlined {
+  color: var(--dark-l);
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 200,
+  'opsz' 48
+}
+
+/* -------------------------------------------- */
+aside{
+  display: flex;
+  width: 20vw;
+  position: relative;
+  background-color: var(--light);
+}
+
+#asideControlBar, .asideContent{
+  height: 100%;
+  background-color: var(--light);
+  padding-top: 1rem;
+}
+
+#asideControlBar{
+  min-width: 60px;
+  max-width: 60px;
+  z-index: 2;
+  border-left: 2px solid var(--light-d);
+  box-shadow: 5px 0px 10px 1px var(--light-dd);
+}
+
+#asideControlBar button{
+  width: 100%;
+  height: 60px;
+  margin-bottom: 10px;
+  padding-block: 5px;
+  transition: all .5s ease;
+}
+
+#asideControlBar button span{
+  transform: scale(1.5);
+  transition: all .5s ease;
+}
+
+#asideControlBar button:hover{
+  background-color: var(--light-d);
+}
+
+#asideControlBar button:active, #asideControlBar button.active{
+  background-color: var(--light-dd);
+}
+
+#asideControlBar button:hover .material-symbols-outlined{
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 700,
+  'GRAD' 200,
+  'opsz' 48
+}
+
+#asideControlBar button.active .material-symbols-outlined{
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 700,
+  'GRAD' 200,
+  'opsz' 48
+}
+
+.asideContent{
+  width: calc(20vw - 60px);
+  min-width: 60px;
+  border-bottom-left-radius: 1rem;
+  border-top-left-radius: 1rem;
+  padding-inline: 1rem;
+  border-left: 2px solid var(--light-d);
+  box-shadow: 4px 0px 10px 1px var(--light-dd);
+
+  position: absolute;
+  z-index: 0;
+  transform: translateX(15%);
+  transition: transform .5s ease-out;
+}
+
+.asideContent.active{
+  position: relative;
+  z-index: 1;
+  transform: translateX(0);
+}
+
+/* aside - contents */
+hr{
+  margin-block: .5rem;
+  border: 1px solid var(--light-dd);
+}
+
+#container_tools, #container_objects, #container_settings{
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  padding-top: .8rem;
+}
+
+#container_tools{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .5rem;
+  row-gap: 1.2rem;
+}
+
+#container_tools button{
+  min-width: 60px;
+  background-color: var(--light);
+  border-radius: .5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 6px;
+  padding-block: 10px;
+  transition: all .3s ease;
+}
+
+#container_tools button:hover{
+  background-color: var(--light-d);
+}
+
+#container_tools button img{
+  width: 40px;
+}
+
+#container_tools button p{
+  font-size: .7rem;
+}
+
+#container_tools button.active{
+  background-color: var(--light-dd);
+}
+
+/* #container_buttons */
+
+.obj{
+  margin-bottom: 10px;
+  margin-left: 4px;
+  display: flex;
+  align-items: center;
+}
+/* -------------------------------------------- */
+
+#footerBar > div{
+  width: 80vw;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: var(--light);
+  padding-inline: 1rem;
+  border-top: 2px solid var(--light-d);
+  box-shadow: 0px 5px 10px 1px var(--light-dd);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+#footerBar.hideTooltip #tooltipBar{
+  display: none;
+}
+
+#footerBar:not(.hideTooltip) #inputBar{
+  display: none;
+}
+
+#msgTitle{
+  padding-right: .5rem;
+}
+
+h4{
+  font-size: 24px;
+  margin-bottom: 3px;
+  width: 50px;
+  color: var(--dark-l);
+}
+
+#inputBar{
+  display: flex;
+}
+
+#writingMode{
+  background-color: var(--light);
+  border: 1px solid var(--light-dd);
+  border-left: 0;
+  padding-left: .6rem;
+  padding-right: 2rem;
+  height: 36px;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  line-height: inherit;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  outline: none;
+  display: grid;
+  margin-right: 1rem;
+  appearance: none;
+  background-image: url(../images/arrow.png);
+  background-repeat: no-repeat;
+  background-position: right .5rem center;
+  background-size: 1rem;
+  transition: all .5s ease-out;
+  order: 2;
+}
+
+#writingMode:hover{
+  border-color: var(--dark-ll);
+}
+
+#writingModeIcon{
+  height: 36px;
+  display: flex;
+  align-items: center;
+  background-color: var(--light);
+  border: 1px solid var(--light-dd);
+  border-right: 0;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  padding-left: 1rem;
+  transition: all .5s ease-out;
+  order: 1;
+}
+
+#writingMode:hover ~ #writingModeIcon{
+  border-color: var(--dark-ll);
+}
+
+#writingModeIcon .material-symbols-outlined{
+  display: none;
+  user-select: none;
+}
+
+#writingModeIcon .material-symbols-outlined.active{
+  display: block;
+}
+
+#inputBar > div.inputs{
+  display: none;
+  order: 3;
+}
+
+#inputBar > div.inputs.active{
+  display: flex;
+  align-items: center;
+}
+
+#inputBar > div.inputs input{
+  border: 0;
+  min-width: 180px;
+  max-width: 360px;
+  flex-grow: 1;
+  font-size: 20px;
+  border-bottom: 3px solid var(--light-dd);
+  outline: none;
+  padding-bottom: 4px;
+  transition: all .5s ease;
+}
+
+#inputBar > div.inputs input:focus{
+  border-color: var(--dark-ll);
+}
+
+#addBtn{
+  color: var(dark-ll);
+  background-color: var(--light);
+  border: 1px solid var(--light-dd);
+  border-radius: 50%;
+  height: 36px;
+  aspect-ratio: 1/1;
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color .5s ease;
+  order: 4;
+}
+
+#addBtn:hover{
+  border-color: var(--dark-ll);
+  color: var(--dark);
+}
+
+#addBtn:active{
+  background-color: var(--light-d);
+}
+
+/* #inputFormula{
+  border: 0;
+  height: 60%;
+  min-width: 150px;
+  max-width: 340px;
+  flex-grow: 1;
+  font-size: 20px;
+  border-bottom: 3px solid #222;
+  outline: none;
+  transition: all .5s ease;
+} */
+
+/* #inputFormula:focus{
+  border-bottom: 3px solid rgb(47, 47, 220);
+} */
+
+/* #input button{
+  margin-left: 1rem;
+  width: 40px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #222;
+  transition: all .3s ease;
+} */
+
+/* #input button:hover{
+  background-color: rgb(47, 47, 220);
+  color: white;
+} */
+
+/* ------------------------------------------------ */
+
+/* Checkbox style */
+
+/* The container */
+.check_container {
+  user-select: none;
+  display: block;
+  position: relative;
+  height: 25px;
+  padding-left: 35px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.check_container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.check_container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.check_container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}

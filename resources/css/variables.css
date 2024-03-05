@@ -1,0 +1,18 @@
+:root {
+  --graph_color_0: rgb(255, 89, 94);
+  --graph_color_1: rgb(25, 130, 196);
+  --graph_color_2: rgb(255, 202, 58);
+  --graph_color_3: rgb(86, 90, 160);
+  --graph_color_4: rgb(138, 201, 38);
+  --graph_color_5: rgb(54, 148, 157);
+  --graph_color_6: rgb(255, 146, 76);
+  --graph_color_7: rgb(66, 103, 172);
+  --graph_color_8: rgb(197, 202, 48);
+  --graph_color_9: rgb(106, 76, 147);
+  --dark: rgb(32, 32, 32);
+  --dark-l: rgb(60, 60, 60);
+  --dark-ll: rgb(80, 80, 80);
+  --light: rgb(255, 255, 255);
+  --light-d: rgb(230, 230, 230);
+  --light-dd: rgb(215, 215, 215);
+}
